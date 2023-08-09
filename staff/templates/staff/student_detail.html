@@ -1,0 +1,100 @@
+{% extends 'accounts/shared/basic.html' %}
+{% load static %}
+
+{% block main %}
+<div class="row ml-5">
+    
+    <div class="col-2 offset-3 ml-6">
+        
+        <table>
+            <tr>
+                <td><h3>{{data.student.first_name}} {{data.student.last_name}}</h3></td>
+                <th><a href="{% url 'student_update' id=data.id %}" class="btn  offset-11 ml-5"><i class="fa fa-pencil" aria-hidden="true"></i></a></th>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>:</td>
+                <td><img src="/media/{{ data.student.photo }}" width="100%" height="200px" alt="{{ data.student.photo }}"></td>
+            </tr>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <td>:</td>
+                <td>{{data.id}}</td>
+            </tr>
+            <tr>
+                <th>First Name</th>
+                <td>:</td>
+                <td>{{data.student.first_name}}</td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td>:</td>
+                <td>{{data.student.last_name}}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>:</td>
+                <td>{{data.student.username}}</td>
+            </tr>
+            <tr>
+                <th>Joined Date</th>
+                <td>:</td>
+                <td>{{data.student.date_joined}}</td>
+            </tr>
+            <tr>
+                <th>Date-of-birth</th>
+                <td>:</td>
+                <td>{{data.student.date_of_birth}}</td>
+            </tr>
+            <tr>
+                <th>Phone No</th>
+                <td>:</td>
+                <td>{{data.student.phone}}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>:</td>
+                <td>{{data.student.email}}</td>
+            </tr>
+            <tr>
+                <th>Standard</th>
+                <td>:</td>
+                <td>{{data.standard}}</td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>:</td>
+                <td>{{data.gender}}</td>
+            </tr>
+            <tr>
+                <th>Parent Name</th>
+                <td>:</td>
+                <td>{{data.parent.parent_name}}</td>
+            </tr>
+            <tr>
+                <th>Parent Mobile</th>
+                <td>:</td>
+                <td>{{data.parent.parent_phone}}</td>
+            </tr>
+            <tr>
+                <th>Parent Email</th>
+                <td>:</td>
+                <td>{{data.parent.parent_email}}</td>
+            </tr>
+            <tr>
+                <th>Parent Job</th>
+                <td>:</td>
+                <td>{{data.parent.parent_job}}</td>
+            </tr>
+            <tr>
+                <th>Class Teacher</th>
+                <td>:</td>
+                <td>{{data.teacher.staff_name.first_name}} {{data.teacher.staff_name.last_name}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+{% endblock main %}
+    

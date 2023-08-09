@@ -1,0 +1,25 @@
+{% extends 'accounts/shared/basic.html' %}
+{% load static %}
+
+{% block main %}
+<main>
+        
+    <div class="col-4 offset-4">
+        <br>
+        <h2>Sign-in</h2>
+        <hr>
+        <form action="" method="post">
+            {% csrf_token %}
+            <label for="uname" >Username</label>
+            <input type="text" name="uname" id="uname" class="form-control">
+            <br>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control">
+            <br>
+            <div class="text-center"><button class="btn btn-primary ">Sign-in</button></div>
+            
+        </form>
+    </div>
+</main>
+{% endblock main %}
+    

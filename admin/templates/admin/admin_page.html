@@ -1,0 +1,47 @@
+{% extends 'accounts/shared/basic.html' %}
+{% load static %}
+
+{% block main %}
+<div class="row">
+    <div class="col">
+        <hr>
+        <h3>Staff List</h3>
+        <a class="btn btn-success offset-10" href="{% url 'admin_staff_signup' %}"><i
+            class="fas fa-plus"></i> New staff</a>
+            <br>
+        <table class="table table-bordered table-hover offset-1">
+            <thead class="thead-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Staff Name</th>
+                    <th>Subject</th>
+                    <th>Class</th>
+                    <th colspan="2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for d in data %}
+                <tr>
+                    <td>{{ d.id }}</td>
+                    <td>{{ d.staff_name.first_name }} {{ d.staff_name.last_name }}</td>
+                    <td>{{ d.sub_taught }}</td>
+                    <td>{{ d.class_taught }}</td>
+                    <td><a href="{% url 'staff_in_detail' id=d.id %}"><button class="btn btn-primary">
+                        View Detail
+                    </button></a></td>
+                    <td><a href="{% url 'teacher_student_list' a_id=d.id %}"><button class="btn btn-success">
+                        Student's List
+                    </button></a></td>
+
+
+                </tr>
+                    
+                {% endfor %}
+                    
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock main %}
+    

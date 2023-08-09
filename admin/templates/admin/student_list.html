@@ -1,0 +1,57 @@
+{% extends 'accounts/shared/basic.html' %}
+{% load static %}
+
+{% block main %}
+<div class="row">
+    <div class="col">
+        <hr>
+        <h3>Student List-{{data.0.teacher.staff_name.first_name}}</h3>
+        
+            <br>
+        <table class="table table-bordered table-hover offset-1">
+            <thead class="thead-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Student Name</th>
+                    <th>Class</th>
+                    <th>More Info</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for d in data %}
+                <tr>
+                    <td>{{ d.id }}</td>
+                    <td>{{ d.student.first_name }} {{ d.student.last_name }}</td>
+                    <td>{{ d.standard }}</td>
+                    <td><a href="{% url 'student_detail' id=d.id %}" class="btn btn-primary">
+                        View Detail
+                    </a>
+                    <a class="btn btn-outline-info offset-1" href="{% url 'progress_card' s_id=d.id %}"><i
+                        class="fa-solid fa-file-lines"></i> Progress Card</a>
+                </td>
+                    <td>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="s_id" value="{{d.id}}">
+                        <select name="term" id="term">
+                            <option value="">------</option>
+                            <option value="1">TERM I</option>
+                            <option value="2">TERM II</option>
+                            <option value="3">TERM III</option>
+        
+                        </select>
+                        <button class="btn btn-success">Result</button>
+                        </form>
+                    </td>
+                </tr>
+                    
+                {% endfor %}
+                    
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock main %}
+    

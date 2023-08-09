@@ -1,0 +1,49 @@
+{% extends 'accounts/shared/basic.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block main %}
+<h3>Student Marklist</h3>
+<hr>
+<div class="row mt-3">
+    <div class="col-6 offset-3 bg-light shadow rounded text-dark text-center" >
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="term">TERM</label>
+                <select name="term" id="term">
+                    <option value="">------</option>
+                    <option value="1">TERM I</option>
+                    <option value="2">TERM II</option>
+                    <option value="3">TERM III</option>
+
+                </select>
+            </div>
+            <table class="table">
+            <tr>
+                <th>Subject</th>
+                <th></th>
+                <th>Mark Obtained</th>
+                <th>Max Mark</th>
+            </tr>
+            {% for s in subject %}
+                <tr>
+                    <th>
+                        {{  s.sub }}
+                    </th>
+                    <td>:</td>
+                    <td> <input type="text" name="obm{{ forloop.counter }}" id="obm{{ forloop.counter }}"></td>
+                    <td><input type="text" name="maxm{{ forloop.counter }}" id="maxm{{ forloop.counter }}" value="100"></td>
+                </tr>
+            {% endfor %}
+                
+        </table>
+
+
+
+            <br>
+            <button class="btn btn-primary">SAVE</button>
+        </form>
+    </div>
+</div>
+{% endblock main %}

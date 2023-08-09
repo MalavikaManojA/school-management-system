@@ -1,0 +1,63 @@
+{% extends 'accounts/shared/basic.html' %}
+{% load static %}
+
+{% block main %}
+<div class="row">
+    <div class="col">
+        <hr>
+        <h3>Student List</h3>
+        <a class="btn btn-outline-info offset-1" href="{% url 'send_progress_card' t_id=data.0.teacher_id %}"><i
+            class="fas fa-envelope"></i> Send Card</a>
+        <a class="btn btn-success offset-10" href="{% url 'student_signup' %}"><i
+            class="fas fa-plus"></i> New student</a>
+            <br>
+        <table class="table table-bordered table-hover offset-1">
+            <thead class="thead-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Student Name</th>
+                    <th>Class</th>
+                    <th>More Info</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for d in data %}
+                <tr>
+                    <td>{{ d.id }}</td>
+                    <td>{{ d.student.first_name }} {{ d.student.last_name }}</td>
+                    <td>{{ d.standard }}</td>
+                    <td><a href="{% url 'student_detail' id=d.id %}" class="btn btn-primary">
+                        View Detail
+                    </a>
+                    <a href="{% url 'student_mark_form' id=d.id %}" class="btn btn-outline-secondary">
+                        Add Mark
+                    </a>
+                    <a class="btn btn-outline-info offset-1" href="{% url 'progress_card' s_id=d.id %}"><i
+                        class="fa-solid fa-file-lines"></i> Progress Card</a>
+                </td>
+                    <td>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="s_id" value="{{d.id}}">
+                        <select name="term" id="term">
+                            <option value="">------</option>
+                            <option value="1">TERM I</option>
+                            <option value="2">TERM II</option>
+                            <option value="3">TERM III</option>
+        
+                        </select>
+                        <button class="btn btn-success">Result</button>
+                        </form>
+                    </td>
+                </tr>
+                    
+                {% endfor %}
+                    
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock main %}
+    

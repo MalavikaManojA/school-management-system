@@ -1,0 +1,57 @@
+<!-- Navbar Start -->
+<div class="container-fluid p-0">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
+        <a href="{% url 'home' %}" class="navbar-brand ml-lg-3">
+            <h1 class="m-0 text-uppercase text-primary"><i class="fas fa-graduation-cap mr-3"></i>Excel's</h1>
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
+            <div class="navbar-nav mx-auto py-0">
+                <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
+                <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+                <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
+                {% if user.is_authenticated %}
+                    
+                    {% if user.is_superuser %}
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Action</a>
+                        <div class="dropdown-menu m-0">
+                            <a href="{% url 'admin_staff_signup' %}" class="dropdown-item">Add Staff</a>
+                            <a href="{% url 'admin_page' %}" class="dropdown-item">Staff List</a>
+                            <a href="{% url 'add_subject' %}" class="dropdown-item">Add Subject</a>
+                        </div>
+                    </div>
+                    {% elif user.is_staff %}
+                    <a href="{% url 'staff_profile' %}" class="nav-item nav-link">Profile</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Action</a>
+                        <div class="dropdown-menu m-0">
+                            <a href="{% url 'student_signup' %}" class="dropdown-item">Add Student</a>
+                            <a href="{% url 'student_list' %}" class="dropdown-item">Student List</a>
+                            
+                            
+                        </div>
+                    </div>
+                    {% else %}
+                    <a href="{% url 'student_profile' %}" class="nav-item nav-link">Profile</a>
+                    <a href="{% url 'student_progress_card' %}" class="nav-item nav-link">Progress Card</a>
+                    {% endif %}
+                    <a href="{% url 'change_password' %}" class="nav-item nav-link">Change Password</a>
+                    </div>
+                    <a href="{% url 'logout' %}" class="btn btn-primary py-2 px-4 d-none d-lg-block">Sign Out</a>   
+                {% else %}
+                    </div>
+                    <a href="{% url 'signin' %}" class="btn btn-primary py-2 px-4 d-none d-lg-block">Sign In</a>
+                {% endif %}
+                
+            </div>  
+                
+        </div>
+    </nav>
+</div>
+
+
+    
+<!-- Navbar End -->

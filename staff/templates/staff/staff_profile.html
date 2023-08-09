@@ -1,0 +1,79 @@
+{% extends 'accounts/shared/basic.html' %}
+{% load static %}
+
+{% block main %}
+<div class="row ml-5">
+    
+    <div class="col-2 offset-3 ml-6">
+        
+        <table>
+            <tr>
+                <td><h3>{{data.staff_name.first_name}} {{data.staff_name.last_name}}</h3></td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>:</td>
+                <td><img src="/media/{{ data.staff_name.photo }}" width="100%" height="200px" alt="{{ data.staff_name.photo }}"></td>
+            </tr>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <td>:</td>
+                <td>{{data.id}}</td>
+            </tr>
+            <tr>
+                <th>First Name</th>
+                <td>:</td>
+                <td>{{data.staff_name.first_name}}</td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td>:</td>
+                <td>{{data.staff_name.last_name}}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>:</td>
+                <td>{{data.staff_name.username}}</td>
+            </tr>
+            <tr>
+                <th>Joined Date</th>
+                <td>:</td>
+                <td>{{data.staff_name.date_joined}}</td>
+            </tr>
+            <tr>
+                <th>Date-of-birth</th>
+                <td>:</td>
+                <td>{{data.staff_name.date_of_birth}}</td>
+            </tr>
+            <tr>
+                <th>Phone No</th>
+                <td>:</td>
+                <td>{{data.staff_name.phone}}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>:</td>
+                <td>{{data.staff_name.email}}</td>
+            </tr>
+            <tr>
+                <th>Qualification</th>
+                <td>:</td>
+                <td>{{data.qualification}}</td>
+            </tr>
+            <tr>
+                <th>Class Taught</th>
+                <td>:</td>
+                <td>{{data.class_taught}}</td>
+            </tr>
+            <tr>
+                <th>Subject</th>
+                <td>:</td>
+                <td>{{data.sub_taught}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+{% endblock main %}
+    

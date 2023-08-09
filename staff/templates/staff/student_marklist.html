@@ -1,0 +1,65 @@
+
+{% extends 'accounts/shared/basic.html' %}
+{% load static %}
+{% block main %}
+<div class="row">
+    <div class="col-8 offset-2 shadow rounded text-dark text-center" >
+       <hr>
+       <h3>TERM {{term}}</h3>
+       <table class="table">
+            
+            
+            <tr>
+                <th>Student Name</th>
+                <th>:</th>
+                <td>{{data.0.mark.student.student.first_name}} {{data.0.mark.student.student.last_name}}</td>    
+                <th>Student ID</th>
+                <th>:</th>
+                <td>{{data.0.mark.student.id}}</td>        
+            </tr>
+           
+                
+            <tr>
+                <th>Total Mark</th>
+                <th>:</th>
+                <td>{{ total_mark }}</td>
+            
+                <th>Max Mark</th>
+                <th>:</th>
+                <td>{{ total_max_mark }}</td>
+            </tr>
+            <tr>
+                <th>Percentage</th>
+                <th>:</th>
+                <td>{{ overall_grade.1 }}</td>
+                <th>Overall Grade</th>
+                <th>:</th>
+                <td>{{ overall_grade.0 }}</td>
+            </tr>
+       </table>
+           <h3>Marklist</h3>
+            <table class="table">
+            <tr>
+                <th>Subject</th>
+                <th></th>
+                <th>Mark Obtained</th>
+                <th>Max Mark</th>
+                <th>Grade</th>
+            </tr>
+            {% for d in data %}
+                
+                <tr>
+                    <th>
+                        {{  d.mark.subject.sub }}
+                    </th>
+                    <td>:</td>
+                    <td>{{d.mark.marks_obtained}}</td>
+                    <td>{{d.mark.max_marks}}</td>   
+                    <td>{{d.grade.0}}</td>   
+                </tr>           
+            {% endfor %}
+                
+        </table>
+    </div>
+</div>
+{% endblock main %}
